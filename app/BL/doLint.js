@@ -27,7 +27,7 @@ module.exports = (req) => {
       }
     }, {filename: fileName});
 
-    if (messages.length !== 0) {
+    if (messages.length === 0) {
       console.log(`Dude, this file was sick! Sending points to the app server`);
       console.log(`username: ${username}`);
       console.log(`Xp: ${modCount}`);
