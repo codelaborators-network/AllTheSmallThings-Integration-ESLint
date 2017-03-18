@@ -2,11 +2,15 @@ const request = require('request');
 const linter = require('eslint').linter;
 const serverUrl = 'http://abstractsausagefactory.azurewebsites.net/api/tracking/';
 
+const integrationsProvider = 100;
+const ADD_EVENT = 100;
+const REMOVE_EVENT = 200;
+
 module.exports = (req) => {
   const payload = {
     UserName: '',
     Xp: 0,
-    integrationsProvider: 100
+    integrationsProvider: integrationsProvider
   };
 
   const gitHubGets = [];
@@ -50,9 +54,13 @@ module.exports = (req) => {
 
   Promise.all(gitHubGets).then(() => {
     console.log(`Dude, these files were sick! Sending points to the app server`);
+
+    payload.eventType = payload.Xp >= 0 ? ADD_EVENT : REMOVE_EVENT;
+
     console.log(`username: ${payload.UserName}`);
-    console.log(`Xp: ${payload.Xp}`);
-    console.log(`integrationsProvider: 100`);
+    console.log(`Xp: ${Math.abs(payload.Xp)}`);
+    console.log(`integrationsProvider: ${integrationsProvider}`);
+    console.log(`eventType: ${payload.eventType}`);
 
     request(
       {
