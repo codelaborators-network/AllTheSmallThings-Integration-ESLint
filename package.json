@@ -1,0 +1,25 @@
+{
+  "name": "atst-eslint-integration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zac Braddy",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "eslint": "^3.18.0",
+    "express": "^4.15.2",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "engines": {
+    "node": "6.10.0"
+  }
+}
