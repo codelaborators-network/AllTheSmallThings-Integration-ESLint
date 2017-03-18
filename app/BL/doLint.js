@@ -34,7 +34,7 @@ module.exports = (req) => {
 
     if (messages.length === 0) {
       console.log(`Dude, this file was sick! Sending points to the app server`);
-      fetch(serverUrl, {
+      /*fetch(serverUrl, {
         method: 'PUT',
         headers: {
           'Content-type': 'application/json'
@@ -45,7 +45,7 @@ module.exports = (req) => {
         })
       }).catch(function(error) {
         console.log('OHH SNAP!!! We got problems sending to the app server son!', error);
-      });
+      });*/
 
       return;
     }
