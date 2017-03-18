@@ -29,6 +29,9 @@ module.exports = (req) => {
 
     if (messages.length !== 0) {
       console.log(`Dude, this file was sick! Sending points to the app server`);
+      console.log(`username: ${username}`);
+      console.log(`Xp: ${modCount}`);
+      console.log(`integrationsProvider: 100`);
       request(
         {
           url: serverUrl,
@@ -42,12 +45,12 @@ module.exports = (req) => {
             integrationsProvider: 100
           })
         },
-        () => {
-          if (error || response.statusCode >= 400) {
-            throw new Error(`Oh crap son! We got an error on our hands talking to the app server man!\r\n${JSON.stringify(response)}`);
+        (errorFromAppServer, responseFromAppServer) => {
+          if (errorFromAppServer || responseFromAppServer.statusCode >= 400) {
+            throw new Error(`Oh crap son! We got an error on our hands talking to the app server man!\r\n${JSON.stringify(responseFromAppServer)}`);
           }
 
-          console.log(response.statusCode);
+          console.log(responseFromAppServer.statusCode);
         });
     }
   });
