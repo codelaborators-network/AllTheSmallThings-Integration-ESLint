@@ -42,10 +42,14 @@ module.exports = (req) => {
             }
           }, {filename: fileName});
 
+          console.log('username', file.username);
+          payload.UserName = file.username;
+
           if (messages.length === 0) {
-            payload.UserName = file.username;
             const xpDiff = parseInt(file.modCount);
             payload.Xp += !isNaN(xpDiff) ? xpDiff : 0;
+          } else {
+            console.log(`${fileName} Failed linting, no points for you!!`);
           }
 
           resolve();
