@@ -62,9 +62,10 @@ module.exports = (req) => {
     console.log(`Dude, these files were sick! Sending points to the app server`);
 
     payload.actionType = payload.Xp >= 0 ? ADD_EVENT : REMOVE_EVENT;
+    payload.Xp = Math.abs(payload.Xp);
 
     console.log(`username: ${payload.UserName}`);
-    console.log(`Xp: ${Math.abs(payload.Xp)}`);
+    console.log(`Xp: ${payload.Xp}`);
     console.log(`integrationsProvider: ${integrationsProvider}`);
     console.log(`eventType: ${payload.actionType}`);
 
