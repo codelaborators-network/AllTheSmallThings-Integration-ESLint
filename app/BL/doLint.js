@@ -7,6 +7,8 @@ const ADD_EVENT = 100;
 const REMOVE_EVENT = 200;
 
 module.exports = (req) => {
+  console.log('request', req);
+
   const payload = {
     UserName: '',
     Xp: 0,
@@ -55,12 +57,12 @@ module.exports = (req) => {
   Promise.all(gitHubGets).then(() => {
     console.log(`Dude, these files were sick! Sending points to the app server`);
 
-    payload.eventType = payload.Xp >= 0 ? ADD_EVENT : REMOVE_EVENT;
+    payload.actionType = payload.Xp >= 0 ? ADD_EVENT : REMOVE_EVENT;
 
     console.log(`username: ${payload.UserName}`);
     console.log(`Xp: ${Math.abs(payload.Xp)}`);
     console.log(`integrationsProvider: ${integrationsProvider}`);
-    console.log(`eventType: ${payload.eventType}`);
+    console.log(`eventType: ${payload.actionType}`);
 
     request(
       {
